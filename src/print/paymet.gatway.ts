@@ -2,7 +2,9 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { io, Socket } from 'socket.io-client';
 import { PrintService } from '../print/print.service';
+import * as dotenv from 'dotenv';
 
+dotenv.config();
 @Injectable()
 export class PaymentsClientGateway implements OnModuleInit {
   private socket: Socket;
@@ -11,9 +13,11 @@ export class PaymentsClientGateway implements OnModuleInit {
 
   onModuleInit() {
     // 🔗 Asosiy serverga ulanamiz (5503/payment)
-    this.socket = io('http://192.168.1.8:5503/payment', {
-      transports: ['websocket'],
-    });
+this.socket = io(`${process.env.BEST_URL}/payment`, {
+  transports: ["websocket"],
+  path: "/payment"
+});
+
 
     this.socket.on('connect', () => {
       console.log('✅ Chek socket serverga ulandi!');

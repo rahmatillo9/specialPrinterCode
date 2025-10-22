@@ -11,9 +11,12 @@ export class OrderClientGateway implements OnModuleInit {
 
   onModuleInit() {
     // 🔗 Asosiy serverga ulanamiz
-    this.socket = io('http://192.168.1.8:5502/order', {
-      transports: ['websocket'],
-    });
+this.socket = io(`${process.env.BEST_URL}/order`, {
+  transports: ["websocket"],
+  path: "/order"  // nginx location bilan bir xil
+});
+
+
 
     this.socket.on('connect', () => {
       console.log('✅ Oshxona socket serverga ulandi!');

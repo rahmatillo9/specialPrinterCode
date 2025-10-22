@@ -36,7 +36,7 @@ app.useGlobalPipes(
 );
   
   const PORT = process.env.PORT || 5100;
-  await app.listen(PORT, "192.168.1.8",() => {
+  await app.listen(PORT, () => {
     console.log(`Server is running on http://192.168.1.73:${PORT}`);
   });
 }

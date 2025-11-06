@@ -1,10 +1,12 @@
 {
   "name": "kitchen-printing",
   "version": "0.0.1",
-  "description": "",
+  "description": "Printer server for kitchen orders",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+  "main": "dist/main.js",
+  "bin": "dist/main.js",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -27,6 +29,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.2",
     "dotenv": "^17.2.3",
+    "node-windows": "^1.0.0-beta.8",
     "pdf-to-printer": "^5.6.0",
     "pdfkit": "^0.17.2",
     "reflect-metadata": "^0.2.2",
@@ -76,5 +79,14 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "pkg": {
+    "assets": [
+      "node_modules/axios/dist/**/*",
+      "node_modules/pdf-to-printer/**/*",
+      "node_modules/pdfkit/**/*",
+      "node_modules/fontkit/**/*",
+      "dist/**/*.env"
+    ]
   }
 }
